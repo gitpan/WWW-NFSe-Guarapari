@@ -1,5 +1,5 @@
 ---
-abstract: 'turns baubles into trinkets'
+abstract: 'Another scraper perl'
 author:
   - 'Álvaro Luiz Andrade <alvaro@web2solutions.com.br>'
 build_requires: {}
@@ -23,5 +23,6 @@ requires:
   warnings: 0
 resources:
   bugtracker: https://github.com/AlvaroBrasilia/WWW-NFSe-Guarapari/issues
+  homepage: http://search.cpan.org/dist/WWW-NFSe-Guarapari/
   repository: git://github.com/AlvaroBrasilia/WWW-NFSe-Guarapari.git
-version: 0.01
+version: 0.02

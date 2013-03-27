@@ -9,7 +9,7 @@ use ExtUtils::MakeMaker 6.30;
 
 
 my %WriteMakefileArgs = (
-  "ABSTRACT" => "turns baubles into trinkets",
+  "ABSTRACT" => "Another scraper perl",
   "AUTHOR" => "\303\201lvaro Luiz Andrade <alvaro\@web2solutions.com.br>",
   "BUILD_REQUIRES" => {},
   "CONFIGURE_REQUIRES" => {
@@ -29,7 +29,7 @@ my %WriteMakefileArgs = (
     "vars" => 0,
     "warnings" => 0
   },
-  "VERSION" => "0.01",
+  "VERSION" => "0.02",
   "test" => {
     "TESTS" => ""
   }

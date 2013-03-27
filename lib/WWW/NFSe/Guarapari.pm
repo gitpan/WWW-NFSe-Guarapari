@@ -1,9 +1,55 @@
 package WWW::NFSe::Guarapari;
-# ABSTRACT: turns baubles into trinkets
 
+#ABSTRACT: Another scraper perl
 
-our $VERSION = '0.01'; our $VERSION = '0.01'; # VERSION
+=encoding utf8
 
+=head1 NAME
+
+WWW::NFSe::Guarapari- Module for issuance electronic invoice and customer management.
+
+=head1 VERSION
+
+version 0.02
+
+=cut
+
+    our $VERSION = '0.02'; # VERSION
+
+=head1 SYNOPSIS
+
+    use WWW::NFSe::Guarapari; 
+
+    my $nfse = WWW::NFSe::Guarapari->new();
+    #my $nfse= new WWW::NFSe::Guarapari();
+
+    # Loga no sistema
+    $nfse->logar( "cpfcnpj", "senha" );
+
+    # Novo Cliente(Tomador/Intermediário)
+    my $tipo_tomador = "J"; # F - J - E(Estrangeiro)
+    my $documento = "000.000.000-00"; # CPF ou CNPJ
+    my $nome = "Fulano de Tal";
+    my $NomeFantasia = "Beltranos S.A"; #If tipo_tomador = "F"
+    my $InscricaoMunicipal = "000.000"; #If tipo_tomador = "F"
+    my $InscricaoEstadual = "000.000"; #If tipo_tomador = "F"
+    my $telefone = "";
+    my $email = "fulano@de.tal";
+    my $municipioEstrangeiro = "NeverLand"; #If tipo_tomador = "E"
+    my $PaisEstrangeiro = "NeverLand"; #If tipo_tomador = "E"
+    my $tipologradouro = "";
+    my $tipoEndereco = "-1"; # -1/Selecione | 3/Cobrança | 2/Comercial | 4/Correspondência | 1/Residencial
+    my $logradouro = "";
+    my $numero = "";
+    my $complemento = "";
+    my $bairro = "";
+    my #cep = "000.000-000";
+    my $uf = "DF";
+    my $cidades = "";
+
+    print $nfse->novo_cliente( $tipo_tomador, $documento, $nome, $telefone, $email, $tipologradouro, $tipoendereco, $logradouro, $numero, $complemento, $bairro, $cep, $uf, $cidades );
+
+=cut
 
     use strict;
     use warnings;
@@ -36,6 +82,20 @@ our $VERSION = '0.01'; our $VERSION = '0.01'; # VERSION
         return $self, $class;
     }
     
+=head1 METHODS
+
+=head2 logar()
+
+Loga no painel de controle. Este método deverá ser chamado antes de qualquer outro método. Ativa flag $statusLogin.
+
+    my $status_login = $painel->logar($email, $senha);
+    
+Return string
+    
+    logged, invalid login, not found, unknow HTTP error, connection error
+
+
+=cut    
     sub logar
     {
         my($self, $cpfcnpj, $senha) = @_;
@@ -97,75 +157,6 @@ our $VERSION = '0.01'; our $VERSION = '0.01'; # VERSION
         }
     }
     
-    
-
-1;
-
-__END__
-
-=pod
-
-=head1 NAME
-
-WWW::NFSe::Guarapari - turns baubles into trinkets
-
-=head1 VERSION
-
-version 0.01
-
-=head1 SYNOPSIS
-
-    use WWW::NFSe::Guarapari; 
-
-    my $nfse = WWW::NFSe::Guarapari->new();
-    #my $nfse= new WWW::NFSe::Guarapari();
-
-    # Loga no sistema
-    $nfse->logar( "cpfcnpj", "senha" );
-
-    # Novo Cliente(Tomador/Intermediário)
-    my $tipo_tomador = "J"; # F - J - E(Estrangeiro)
-    my $documento = "000.000.000-00"; # CPF ou CNPJ
-    my $nome = "Fulano de Tal";
-    my $NomeFantasia = "Beltranos S.A"; #If tipo_tomador = "F"
-    my $InscricaoMunicipal = "000.000"; #If tipo_tomador = "F"
-    my $InscricaoEstadual = "000.000"; #If tipo_tomador = "F"
-    my $telefone = "";
-    my $email = "fulano@de.tal";
-    my $municipioEstrangeiro = "NeverLand"; #If tipo_tomador = "E"
-    my $PaisEstrangeiro = "NeverLand"; #If tipo_tomador = "E"
-    my $tipologradouro = "";
-    my $tipoEndereco = "-1"; # -1/Selecione | 3/Cobrança | 2/Comercial | 4/Correspondência | 1/Residencial
-    my $logradouro = "";
-    my $numero = "";
-    my $complemento = "";
-    my $bairro = "";
-    my #cep = "000.000-000";
-    my $uf = "DF";
-    my $cidades = "";
-
-    print $nfse->novo_cliente( $tipo_tomador, $documento, $nome, $telefone, $email, $tipologradouro, $tipoendereco, $logradouro, $numero, $complemento, $bairro, $cep, $uf, $cidades );
-
-=head1 NAME
-
-WWW::NFSe::Guarapari- Module for issuance electronic invoice and customer management.
-
-=head1 VERSION
-
-0.01
-
-=head1 METHODS
-
-=head2 logar()
-
-Loga no painel de controle. Este método deverá ser chamado antes de qualquer outro método. Ativa flag $statusLogin.
-
-    my $status_login = $painel->logar($email, $senha);
-
-Return string
-
-    logged, invalid login, not found, unknow HTTP error, connection error
-
 =head2 novo_cliente()
 
 Cria novo tomador/Intermediário
@@ -199,16 +190,12 @@ Return JSON
     {"resposta":"E-mail em uso","status":"erro"}
     {"resposta":"efetue login primeiro","status":"erro"}
 
-=head1 AUTHOR
+=cut   
+    
 
-Álvaro Luiz Andrade <alvaro@web2solutions.com.br>
+1;
 
-=head1 COPYRIGHT AND LICENSE
-
-This software is copyright (c) 2013 by Álvaro Luiz Andrade.
-
-This is free software; you can redistribute it and/or modify it under
-the same terms as the Perl 5 programming language system itself.
+__END__
 
 =head1 AUTHOR
 

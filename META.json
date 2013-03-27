@@ -1,5 +1,5 @@
 {
-   "abstract" : "turns baubles into trinkets",
+   "abstract" : "Another scraper perl",
    "author" : [
       "\u00c3\u0081lvaro Luiz Andrade <alvaro@web2solutions.com.br>"
    ],
@@ -37,12 +37,13 @@
       "bugtracker" : {
          "web" : "https://github.com/AlvaroBrasilia/WWW-NFSe-Guarapari/issues"
       },
+      "homepage" : "http://search.cpan.org/dist/WWW-NFSe-Guarapari/",
       "repository" : {
          "type" : "git",
          "url" : "git://github.com/AlvaroBrasilia/WWW-NFSe-Guarapari.git",
          "web" : "https://github.com/AlvaroBrasilia/WWW-NFSe-Guarapari"
       }
    },
-   "version" : "0.01"
+   "version" : "0.02"
 }
 
